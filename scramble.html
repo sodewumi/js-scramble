@@ -40,11 +40,25 @@
             var userInput = prompt("Unscramble this word: " + scrambledWord);
             userInput = userInput.toLowerCase().trim();
             // If the user guesses wrong, tell them they were wrong and the right word.
-            if (userInput !== regularWord) {
-                confirm("That is the wrong word. The right word is " + regularWord+".");
-            } else {
-                alert("Congrats! You guessed " +regularWord+ " which was the right word?");
+
+
+            var guessing = true
+            while (guessing) {
+                try {
+                    if (userInput === regularWord){
+                        alert("Congrats! You guessed " +regularWord+ " which was the right word!");
+                        guessing = false    
+                    }else{
+                        throw "This is the incorrect word."
+                    }
+                    
+                } catch (error){
+                    print (error);
+                    var userInput = prompt("Try to uscramble this word again: " + scrambledWord);
+                    userInput = userInput.toLowerCase().trim();
+                }
             }
+
 
             playing = confirm("Press OK To keep playing or Cancel to quit");
 
